@@ -1,0 +1,478 @@
+[
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "minCrowdsaleAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "withdrawAmount",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isSuccess",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "transactionCounter",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "totalAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "minPresaleAmountForDeal",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxThirdPhaseAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "firstPhaseDiscount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "endTime",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "withdraw",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "rateToEther",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "refund",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "bonusesTimeFrozen",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "secondPhaseDiscount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "teamAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "startTime",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isFinished",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "thirdPhaseDiscount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "developmentFundAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "changeOwner",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "presaleDiscount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxFirstPhaseAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxSecondPhaseAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "finishCrowdsale",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "confirmOwner",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "receiveFrozenBonuses",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "bountyAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxPresaleAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "newOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "bonusesPayed",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "currentAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "token",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "fallback"
+  }
+]
