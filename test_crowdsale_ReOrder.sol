@@ -198,28 +198,28 @@ contract Crowdsale is owned {
     uint256 public constant teamAmount =            1750000 * tokenDecimals; // amount for team
     uint256 public constant bountyAmount =          1750000 * tokenDecimals; // bounty amount
 //    uint256 public constant bonusesTimeFrozen = 90 days; // freeze time for get all bonuses
-    uint256 public constant bonusesTimeFrozen = 3 days; // freeze time for get all bonuses
+    uint256 public constant bonusesTimeFrozen = 1 days; // freeze time for get all bonuses
     bool public bonusesPayed = false;
 
-    uint256 public constant rateToEther = 5* 100 * 10000000; // testing data for 1ETH = 500.000.000 tokens
+    uint256 public constant rateToEther = 5* 100 * 1000000; // testing data for 1ETH = 500.000.000 tokens
                                                         // rate to ether, how much tokens gives to 1 ether
 
-    uint public constant presaleDiscount =      40;
-    uint public constant firstPhaseDiscount =   30;
-    uint public constant secondPhaseDiscount =  20;
-    uint public constant thirdPhaseDiscount =   10;
+    uint public constant presaleBonus =      40;
+    uint public constant firstPhaseBonus =   30;
+    uint public constant secondPhaseBonus =  20;
+    uint public constant thirdPhaseBonus =   10;
     uint256 public constant maxPresaleAmount =      1500000 * tokenDecimals;
     uint256 public constant maxFirstPhaseAmount =   4500000 * tokenDecimals;
     uint256 public constant maxSecondPhaseAmount =  15000000 * tokenDecimals;
     uint256 public constant maxThirdPhaseAmount =   28000000 * tokenDecimals;
 
-    uint256 public constant minPresaleAmountForDeal = 1 * 1000000000000000000 / 10000; // testing data. it's minimum 0.001 eth. for deal.
+    uint256 public constant minPresaleAmountForDeal = 10 * 1000000000000000000 / 10000; // testing data. it's minimum 0.01 eth. for deal.
 
     mapping (address => uint256) amounts;
 
-    uint public constant startTime =    1508603349; //test data Saturday, October 21, 2017 4:29:09 PM
+    uint public constant startTime =    1508718549; //test data Saturday, October 22, 2017 0:29:09 PM
 // 1510056000; // start at 07 NOV 2017 07:00:00 EST
-    uint public constant endTime =  1508732949; // test data Sunday, October 22, 2017 4:29:09 PM +12h
+    uint public constant endTime =  1508804949; // test data Sunday, October 23, 2017 0:29:09 PM +12h
 //1512648000; // end at   07 DEC 2017 07:00:00 EST
 
     modifier canBuy() {
@@ -256,16 +256,16 @@ contract Crowdsale is owned {
     }
 
     function() external canBuy payable {
-        uint discount = getDiscount();
+        uint bonus = getBonus();
         uint256 amount = msg.value;
-        uint256 givenTokens = amount.mul(rateToEther).mul(100).div(100 - discount);
+        uint256 givenTokens = amount.mul(rateToEther).div(100).mul(100 + bonus);
         uint256 leftTokens = maxThirdPhaseAmount.sub(totalSupply);
 
         if (givenTokens > leftTokens) {
-            givenTokens = givenTokens.sub(leftTokens);
-            uint256 needAmount = givenTokens.mul(100 - discount).div(rateToEther).div(100);
+            givenTokens = leftTokens;
+            uint256 needAmount = givenTokens.mul(100).div(100 + bonus).div(rateToEther);
             require(amount > needAmount);
-            require(msg.sender.call.gas(3000000).value(amount.sub(needAmount))());
+            require(msg.sender.call.gas(3000000).value(amount - needAmount)());
             amount = needAmount;
         }
 
@@ -282,15 +282,15 @@ contract Crowdsale is owned {
         transactionCounter = transactionCounter + 1;
     }
 
-    function getDiscount() private returns (uint) {
+    function getBonus() private returns (uint) {
         if (now < startTime) {
-            return presaleDiscount;
+            return presaleBonus;
         } else if (totalSupply > maxSecondPhaseAmount) {
-            return thirdPhaseDiscount;
+            return thirdPhaseBonus;
         } else if (totalSupply > maxFirstPhaseAmount) {
-            return secondPhaseDiscount;
+            return secondPhaseBonus;
         }
-        return firstPhaseDiscount;
+        return firstPhaseBonus;
     }
 
     function finishCrowdsale() external onlyOwner {

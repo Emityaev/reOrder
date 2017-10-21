@@ -203,10 +203,10 @@ contract Crowdsale is owned {
     uint256 public constant rateToEther = 100 * 100000; // testing data for 1ETH = 1.000.0000 tokens
                                                         // rate to ether, how much tokens gives to 1 ether
 
-    uint public constant presaleDiscount =      40;
-    uint public constant firstPhaseDiscount =   30;
-    uint public constant secondPhaseDiscount =  20;
-    uint public constant thirdPhaseDiscount =   10;
+    uint public constant presaleBonus =      40;
+    uint public constant firstPhaseBonus =   30;
+    uint public constant secondPhaseBonus =  20;
+    uint public constant thirdPhaseBonus =   10;
     uint256 public constant maxPresaleAmount =      1500000 * tokenDecimals;
     uint256 public constant maxFirstPhaseAmount =   4500000 * tokenDecimals;
     uint256 public constant maxSecondPhaseAmount =  15000000 * tokenDecimals;
@@ -255,16 +255,16 @@ contract Crowdsale is owned {
     }
 
     function() external canBuy payable {
-        uint discount = getDiscount();
+        uint bonus = getBonus();
         uint256 amount = msg.value;
-        uint256 givenTokens = amount.mul(rateToEther).mul(100).div(100 - discount);
+        uint256 givenTokens = amount.mul(rateToEther).div(100).mul(100 + bonus);
         uint256 leftTokens = maxThirdPhaseAmount.sub(totalSupply);
 
         if (givenTokens > leftTokens) {
-            givenTokens = givenTokens.sub(leftTokens);
-            uint256 needAmount = givenTokens.mul(100 - discount).div(rateToEther).div(100);
+            givenTokens = leftTokens;
+            uint256 needAmount = givenTokens.mul(100).div(100 + bonus).div(rateToEther);
             require(amount > needAmount);
-            require(msg.sender.call.gas(3000000).value(amount.sub(needAmount))());
+            require(msg.sender.call.gas(3000000).value(amount - needAmount)());
             amount = needAmount;
         }
 
@@ -281,15 +281,15 @@ contract Crowdsale is owned {
         transactionCounter = transactionCounter + 1;
     }
 
-    function getDiscount() private returns (uint) {
+    function getBonus() private returns (uint) {
         if (now < startTime) {
-            return presaleDiscount;
+            return presaleBonus;
         } else if (totalSupply > maxSecondPhaseAmount) {
-            return thirdPhaseDiscount;
+            return thirdPhaseBonus;
         } else if (totalSupply > maxFirstPhaseAmount) {
-            return secondPhaseDiscount;
+            return secondPhaseBonus;
         }
-        return firstPhaseDiscount;
+        return firstPhaseBonus;
     }
 
     function finishCrowdsale() external onlyOwner {
