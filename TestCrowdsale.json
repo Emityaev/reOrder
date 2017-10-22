@@ -114,7 +114,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "firstPhaseDiscount",
+    "name": "endTime",
     "outputs": [
       {
         "name": "",
@@ -128,7 +128,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "endTime",
+    "name": "firstPhaseBonus",
     "outputs": [
       {
         "name": "",
@@ -175,20 +175,6 @@
     "constant": true,
     "inputs": [],
     "name": "bonusesTimeFrozen",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "secondPhaseDiscount",
     "outputs": [
       {
         "name": "",
@@ -258,20 +244,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "thirdPhaseDiscount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -298,6 +270,20 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "presaleBonus",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -309,20 +295,6 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "presaleDiscount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -425,6 +397,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "thirdPhaseBonus",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "bonusesPayed",
     "outputs": [
       {
@@ -458,6 +444,20 @@
       {
         "name": "",
         "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "secondPhaseBonus",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
