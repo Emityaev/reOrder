@@ -305,11 +305,6 @@ contract Crowdsale is owned {
         token.transfer(msg.sender, bonuses);
     }
 
-//    function migrateToken(address newContract) external onlyOwner {
-//        require(isFinished());
-//        token.changeOwner(newContract);
-//    }
-
     function refund() external canRefund {
         uint256 amount = amounts[msg.sender];
         require(amount > 0);
