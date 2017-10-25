@@ -167,9 +167,9 @@ contract MintableToken is StandardToken, owned {
 
 contract RCoin is MintableToken {
 
-    string public constant name = "RTest Coin";
+    string public constant name = "RTest2 Coin";
 
-    string public constant symbol = "Rte";
+    string public constant symbol = "RT2";
 
     uint32 public constant decimals = 18;
 }
@@ -185,23 +185,23 @@ contract Crowdsale is owned {
 
     RCoin public token;
 
-    uint256 constant tokenDecimals = 1000000000000000000;
+    uint256 constant tokenDecimals = 10**18;
 
     uint256 public totalSupply = 0;
     uint256 public totalAmount = 0;
     uint256 public currentAmount = 0;
     uint public transactionCounter = 0;
 
-    uint256 public constant minCrowdsaleAmount =    35000 * tokenDecimals; // min amount for successfull crowdsale
+    uint256 public constant minCrowdsaleAmount =    100000 * tokenDecimals; // min amount for successfull crowdsale
     uint256 public constant maxAmount =             35000000 * tokenDecimals; // max minting amount
     uint256 public constant developmentFundAmount = 3500000 * tokenDecimals; // amount of development fund
     uint256 public constant teamAmount =            1750000 * tokenDecimals; // amount for team
     uint256 public constant bountyAmount =          1750000 * tokenDecimals; // bounty amount
 //    uint256 public constant bonusesTimeFrozen = 90 days; // freeze time for get all bonuses
-    uint256 public constant bonusesTimeFrozen = 1 days; // freeze time for get all bonuses
+    uint256 public constant bonusesTimeFrozen = 12*60*60; // freeze time for get all bonuses
     bool public bonusesPayed = false;
 
-    uint256 public constant rateToEther = 5* 100 * 1000000; // testing data for 1ETH = 500.000.000 tokens
+    uint256 public constant rateToEther = 5* 100 * 10**6; // testing data for 1ETH = 500.000.000 tokens
                                                         // rate to ether, how much tokens gives to 1 ether
 
     uint public currentBonus =               40;
@@ -214,13 +214,13 @@ contract Crowdsale is owned {
     uint256 public constant maxSecondPhaseAmount =  15000000 * tokenDecimals;
     uint256 public constant maxThirdPhaseAmount =   28000000 * tokenDecimals;
 
-    uint256 public constant minPresaleAmountForDeal = 10 * 1000000000000000000 / 10000; // testing data. it's minimum 0.01 eth. for deal.
+    uint256 public constant minPresaleAmountForDeal = 10 * 10**18 / 10000; // testing data. it's minimum 0.001 eth. for deal.
 
     mapping (address => uint256) amounts;
 
-    uint public constant startTime =    1508718549; //test data Saturday, October 22, 2017 0:29:09 PM
+    uint public constant startTime =    1508990400; //Thursday, October 26, 2017 4:00:00 AM
 // 1510056000; // start at 07 NOV 2017 07:00:00 EST
-    uint public constant endTime =  1508804949; // test data Sunday, October 23, 2017 0:29:09 PM +12h
+    uint public constant endTime =  1509076800; //  Friday, October 27, 2017 4:00:00 AM
 //1512648000; // end at   07 DEC 2017 07:00:00 EST
 
     modifier canBuy() {

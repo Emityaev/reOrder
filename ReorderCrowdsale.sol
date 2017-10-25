@@ -185,14 +185,14 @@ contract Crowdsale is owned {
 
     RCoin public token;
 
-    uint256 constant tokenDecimals = 1000000000000000000;
+    uint256 constant tokenDecimals = 10**18;
 
     uint256 public totalSupply = 0;
     uint256 public totalAmount = 0;
     uint256 public currentAmount = 0;
     uint public transactionCounter = 0;
 
-    uint256 public constant minCrowdsaleAmount =    35000 * tokenDecimals; // min amount for successfull crowdsale
+    uint256 public constant minCrowdsaleAmount =    100000 * tokenDecimals; // min amount for successfull crowdsale
     uint256 public constant maxAmount =             35000000 * tokenDecimals; // max minting amount
     uint256 public constant developmentFundAmount = 3500000 * tokenDecimals; // amount of development fund
     uint256 public constant teamAmount =            1750000 * tokenDecimals; // amount for team
@@ -200,7 +200,7 @@ contract Crowdsale is owned {
     uint256 public constant bonusesTimeFrozen = 90 days; // freeze time for get all bonuses
     bool public bonusesPayed = false;
 
-    uint256 public constant rateToEther = 100; // rate to ether, how much tokens gives to 1 ether
+    uint256 public constant rateToEther = 250; // rate to ether, how much tokens gives to 1 ether
 
     uint public currentBonus =               40;
     uint public constant presaleBonus =      40;
@@ -212,7 +212,7 @@ contract Crowdsale is owned {
     uint256 public constant maxSecondPhaseAmount =  15000000 * tokenDecimals;
     uint256 public constant maxThirdPhaseAmount =   28000000 * tokenDecimals;
 
-    uint256 public constant minPresaleAmountForDeal = 10 * 1000000000000000000;
+    uint256 public constant minPresaleAmountForDeal = 10 * 10**18;
 
     mapping (address => uint256) amounts;
 
