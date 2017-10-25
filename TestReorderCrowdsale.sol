@@ -203,6 +203,7 @@ contract Crowdsale is owned {
     uint256 public constant rateToEther = 100 * 100000; // testing data for 1ETH = 1.000.0000 tokens
                                                         // rate to ether, how much tokens gives to 1 ether
 
+    uint public currentBonus =               40;
     uint public constant presaleBonus =      40;
     uint public constant firstPhaseBonus =   30;
     uint public constant secondPhaseBonus =  20;
@@ -255,14 +256,13 @@ contract Crowdsale is owned {
     }
 
     function() external canBuy payable {
-        uint bonus = getBonus();
         uint256 amount = msg.value;
-        uint256 givenTokens = amount.mul(rateToEther).div(100).mul(100 + bonus);
+        uint256 givenTokens = amount.mul(rateToEther).div(100).mul(100 + currentBonus);
         uint256 leftTokens = maxThirdPhaseAmount.sub(totalSupply);
 
         if (givenTokens > leftTokens) {
             givenTokens = leftTokens;
-            uint256 needAmount = givenTokens.mul(100).div(100 + bonus).div(rateToEther);
+            uint256 needAmount = givenTokens.mul(100).div(100 + currentBonus).div(rateToEther);
             require(amount > needAmount);
             require(msg.sender.call.gas(3000000).value(amount - needAmount)());
             amount = needAmount;
@@ -278,6 +278,7 @@ contract Crowdsale is owned {
 
         totalSupply = totalSupply.add(givenTokens);
         token.mint(msg.sender, givenTokens);
+        currentBonus = getBonus();
         transactionCounter = transactionCounter + 1;
     }
 
