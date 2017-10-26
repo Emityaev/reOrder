@@ -167,9 +167,9 @@ contract MintableToken is StandardToken, owned {
 
 contract RCoin is MintableToken {
 
-    string public constant name = "R Coin";
+    string public constant name = "RCoin";
 
-    string public constant symbol = "R";
+    string public constant symbol = "RCO";
 
     uint32 public constant decimals = 18;
 }
