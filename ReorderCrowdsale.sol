@@ -192,12 +192,12 @@ contract Crowdsale is owned {
     uint256 public currentAmount = 0;
     uint public transactionCounter = 0;
 
-    uint256 public constant minCrowdsaleAmount =    100000 * tokenDecimals; // min amount for successfull crowdsale
+    uint256 public constant minCrowdsaleAmount =    120000 * tokenDecimals; // min amount for successfull crowdsale
     uint256 public constant maxAmount =             35000000 * tokenDecimals; // max minting amount
     uint256 public constant developmentFundAmount = 3500000 * tokenDecimals; // amount of development fund
     uint256 public constant teamAmount =            1750000 * tokenDecimals; // amount for team
     uint256 public constant bountyAmount =          1750000 * tokenDecimals; // bounty amount
-    uint256 public constant bonusesTimeFrozen = 90 days; // freeze time for get all bonuses
+    uint256 public constant bonusesTimeFrozen = 180 days; // freeze time for get all bonuses
     bool public bonusesPayed = false;
 
     uint256 public constant rateToEther = 250; // rate to ether, how much tokens gives to 1 ether
@@ -213,7 +213,7 @@ contract Crowdsale is owned {
     uint256 public constant maxThirdPhaseAmount =   28000000 * tokenDecimals;
 
     uint256 public constant minPresaleAmountForDeal = 1 * 10**18; //1 ETH
-    uint256 public constant minSaleAmountForDeal = 1 * 10**17; //0.01 ETH
+    uint256 public constant minSaleAmountForDeal = 1 * 10**17; //0.1 ETH
 
     mapping (address => uint256) amounts;
 
