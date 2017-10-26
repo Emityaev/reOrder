@@ -212,7 +212,8 @@ contract Crowdsale is owned {
     uint256 public constant maxSecondPhaseAmount =  15000000 * tokenDecimals;
     uint256 public constant maxThirdPhaseAmount =   28000000 * tokenDecimals;
 
-    uint256 public constant minPresaleAmountForDeal = 10 * 10**18;
+    uint256 public constant minPresaleAmountForDeal = 1 * 10**18; //1 ETH
+    uint256 public constant minSaleAmountForDeal = 1 * 10**16; //0.01 ETH
 
     mapping (address => uint256) amounts;
 
@@ -224,7 +225,7 @@ contract Crowdsale is owned {
         if (now < startTime) {
             require(msg.value >= minPresaleAmountForDeal && totalSupply < maxPresaleAmount);
         } else {
-            require(totalSupply < maxThirdPhaseAmount);
+            require(msg.value >= minSaleAmountForDeal && totalSupply < maxThirdPhaseAmount);
         }
         _;
     }
