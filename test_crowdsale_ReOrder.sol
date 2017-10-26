@@ -215,6 +215,7 @@ contract Crowdsale is owned {
     uint256 public constant maxThirdPhaseAmount =   28000000 * tokenDecimals;
 
     uint256 public constant minPresaleAmountForDeal = 10 * 10**18 / 10000; // testing data. it's minimum 0.001 eth. for deal.
+    uint256 public constant minSaleAmountForDeal = 1 * 10**16 / 1000; //0.00001 ETH
 
     mapping (address => uint256) amounts;
 
@@ -228,7 +229,7 @@ contract Crowdsale is owned {
         if (now < startTime) {
             require(msg.value >= minPresaleAmountForDeal && totalSupply < maxPresaleAmount);
         } else {
-            require(totalSupply < maxThirdPhaseAmount);
+            require(msg.value >= minSaleAmountForDeal && totalSupply < maxThirdPhaseAmount);
         }
         _;
     }
