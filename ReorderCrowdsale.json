@@ -142,6 +142,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "superBonus",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "firstPhaseBonus",
     "outputs": [
       {
@@ -189,6 +203,20 @@
     "constant": true,
     "inputs": [],
     "name": "bonusesTimeFrozen",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "minSuperBonusAmountForDeal",
     "outputs": [
       {
         "name": "",
@@ -258,11 +286,61 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "minExtraBonusAmountForDeal",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "bonusValue",
+        "type": "uint256"
+      },
+      {
+        "name": "bonusEndTime",
+        "type": "uint256"
+      },
+      {
+        "name": "minAmountForDealInEther",
+        "type": "uint256"
+      }
+    ],
+    "name": "setSuperBonus",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "owner",
     "outputs": [
       {
         "name": "",
         "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "extraBonus",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -430,6 +508,20 @@
       {
         "name": "",
         "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "superBonusEndTime",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,

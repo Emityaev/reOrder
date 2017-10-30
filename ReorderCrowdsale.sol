@@ -217,7 +217,7 @@ contract Crowdsale is owned {
 
     uint256 public constant minPresaleAmountForDeal = 1 * 10**18; //1 ETH
     uint256 public constant minSaleAmountForDeal = 1 * 10**17; //0.1 ETH
-    uint256 public constant minExtraBonusAmountForDeal = 100 * 10**18; //1 ETH
+    uint256 public constant minExtraBonusAmountForDeal = 100 * 10**18; //100 ETH
     uint256 public minSuperBonusAmountForDeal = 0;
 
     mapping (address => uint256) amounts;
