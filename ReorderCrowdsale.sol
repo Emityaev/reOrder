@@ -207,6 +207,9 @@ contract Crowdsale is owned {
     uint public constant firstPhaseBonus =   30;
     uint public constant secondPhaseBonus =  20;
     uint public constant thirdPhaseBonus =   10;
+    uint public constant extraBonus =        5;
+    uint public superBonus = 0;
+
     uint256 public constant maxPresaleAmount =      1500000 * tokenDecimals;
     uint256 public constant maxFirstPhaseAmount =   4500000 * tokenDecimals;
     uint256 public constant maxSecondPhaseAmount =  15000000 * tokenDecimals;
@@ -214,11 +217,14 @@ contract Crowdsale is owned {
 
     uint256 public constant minPresaleAmountForDeal = 1 * 10**18; //1 ETH
     uint256 public constant minSaleAmountForDeal = 1 * 10**17; //0.1 ETH
+    uint256 public constant minExtraBonusAmountForDeal = 100 * 10**18; //1 ETH
+    uint256 public minSuperBonusAmountForDeal = 0;
 
     mapping (address => uint256) amounts;
 
     uint public constant startTime =    1510056000; // start at 07 NOV 2017 07:00:00 EST
     uint public constant endTime =      1512648000; // end at   07 DEC 2017 07:00:00 EST
+    uint public superBonusEndTime = 0;
 
     modifier canBuy() {
         require(!isFinished());
@@ -255,12 +261,13 @@ contract Crowdsale is owned {
 
     function() external canBuy payable {
         uint256 amount = msg.value;
-        uint256 givenTokens = amount.mul(rateToEther).div(100).mul(100 + currentBonus);
+        uint bonus = currentBonus + getAdditionalBonus(amount);
+        uint256 givenTokens = amount.mul(rateToEther).div(100).mul(100 + bonus);
         uint256 leftTokens = maxThirdPhaseAmount.sub(totalSupply);
 
         if (givenTokens > leftTokens) {
             givenTokens = leftTokens;
-            uint256 needAmount = givenTokens.mul(100).div(100 + currentBonus).div(rateToEther);
+            uint256 needAmount = givenTokens.mul(100).div(100 + bonus).div(rateToEther);
             require(amount > needAmount);
             require(msg.sender.call.gas(3000000).value(amount - needAmount)());
             amount = needAmount;
@@ -289,6 +296,22 @@ contract Crowdsale is owned {
             return secondPhaseBonus;
         }
         return firstPhaseBonus;
+    }
+
+    function getAdditionalBonus(uint256 amount) private returns (uint) {
+        if (now < superBonusEndTime && amount >= minSuperBonusAmountForDeal) {
+            return superBonus;
+        }
+        if (amount >= minExtraBonusAmountForDeal) {
+            return extraBonus;
+        }
+        return 0;
+    }
+
+    function setSuperBonus(uint bonusValue, uint bonusEndTime, uint minAmountForDealInEther) external onlyOwner {
+        superBonus = bonusValue;
+        superBonusEndTime = bonusEndTime;
+        minSuperBonusAmountForDeal = minAmountForDealInEther * 1 ether;
     }
 
     function finishCrowdsale() external onlyOwner {
