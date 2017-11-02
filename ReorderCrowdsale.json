@@ -1,19 +1,5 @@
 [
   {
-    "constant": true,
-    "inputs": [],
-    "name": "minCrowdsaleAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": false,
     "inputs": [
       {
@@ -154,20 +140,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "firstPhaseBonus",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": false,
     "inputs": [],
     "name": "withdraw",
@@ -202,49 +174,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "bonusesTimeFrozen",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "minSuperBonusAmountForDeal",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "maxAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "teamAmount",
     "outputs": [
       {
         "name": "",
@@ -334,48 +264,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "extraBonus",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "developmentFundAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "presaleBonus",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": false,
     "inputs": [
       {
@@ -447,20 +335,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "bountyAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "maxPresaleAmount",
     "outputs": [
       {
@@ -480,20 +354,6 @@
       {
         "name": "",
         "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "thirdPhaseBonus",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
       }
     ],
     "payable": false,
@@ -564,20 +424,6 @@
       {
         "name": "",
         "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "secondPhaseBonus",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
       }
     ],
     "payable": false,

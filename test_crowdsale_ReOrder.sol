@@ -25,25 +25,25 @@ contract ERC20 is ERC20Basic {
 
 library SafeMath {
 
-    function mul(uint256 a, uint256 b) internal constant returns (uint256) {
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a * b;
         assert(a == 0 || c / a == b);
         return c;
     }
 
-    function div(uint256 a, uint256 b) internal constant returns (uint256) {
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
         uint256 c = a / b;
         // assert(a == b * c + a % b); // There is no case in which this doesn't hold
         return c;
     }
 
-    function sub(uint256 a, uint256 b) internal constant returns (uint256) {
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b <= a);
         return a - b;
     }
 
-    function add(uint256 a, uint256 b) internal constant returns (uint256) {
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
         assert(c >= a);
         return c;
@@ -192,24 +192,24 @@ contract Crowdsale is owned {
     uint256 public currentAmount = 0;
     uint public transactionCounter = 0;
 
-    uint256 public constant minCrowdsaleAmount =    100000 * tokenDecimals; // min amount for successfull crowdsale
-    uint256 public constant maxAmount =             35000000 * tokenDecimals; // max minting amount
-    uint256 public constant developmentFundAmount = 3500000 * tokenDecimals; // amount of development fund
-    uint256 public constant teamAmount =            1750000 * tokenDecimals; // amount for team
-    uint256 public constant bountyAmount =          1750000 * tokenDecimals; // bounty amount
-//    uint256 public constant bonusesTimeFrozen = 90 days; // freeze time for get all bonuses
-    uint256 public constant bonusesTimeFrozen = 12*60*60; // freeze time for get all bonuses
+    uint256 constant minCrowdsaleAmount =    100000 * tokenDecimals; // min amount for successfull crowdsale
+    uint256 constant maxAmount =             35000000 * tokenDecimals; // max minting amount
+    uint256 constant developmentFundAmount = 3500000 * tokenDecimals; // amount of development fund
+    uint256 constant teamAmount =            1750000 * tokenDecimals; // amount for team
+    uint256 constant bountyAmount =          1750000 * tokenDecimals; // bounty amount
+    //    uint256 public constant bonusesTimeFrozen = 90 days; // freeze time for get all bonuses
+    uint256 constant bonusesTimeFrozen = 1*60*60; // freeze time for get all bonuses
     bool public bonusesPayed = false;
 
     uint256 public constant rateToEther = 5* 100 * 10**6; // testing data for 1ETH = 500.000.000 tokens
-                                                        // rate to ether, how much tokens gives to 1 ether
+    // rate to ether, how much tokens gives to 1 ether
 
-    uint public currentBonus =               40;
-    uint public constant presaleBonus =      40;
-    uint public constant firstPhaseBonus =   30;
-    uint public constant secondPhaseBonus =  20;
-    uint public constant thirdPhaseBonus =   10;
-    uint public constant extraBonus =        5;
+    uint public currentBonus =        40;
+    uint constant presaleBonus =      40;
+    uint constant firstPhaseBonus =   30;
+    uint constant secondPhaseBonus =  20;
+    uint constant thirdPhaseBonus =   10;
+    uint constant extraBonus =        5;
     uint public superBonus = 0;
 
     uint256 public constant maxPresaleAmount =      1500000 * tokenDecimals;
@@ -225,10 +225,10 @@ contract Crowdsale is owned {
 
     mapping (address => uint256) amounts;
 
-    uint public constant startTime =    1508990400; //Thursday, October 26, 2017 4:00:00 AM
-// 1510056000; // start at 07 NOV 2017 07:00:00 EST
-    uint public constant endTime =  1509076800; //  Friday, October 27, 2017 4:00:00 AM
-//1512648000; // end at   07 DEC 2017 07:00:00 EST
+    uint public constant startTime =    1509030000; //Thursday, October 31, 2017 03:00:00 PM
+    // 1510056000; // start at 07 NOV 2017 07:00:00 EST
+    uint public constant endTime =  1509066000; //  Friday, NOV 01, 2017 12:00:00 AM
+    //1512648000; // end at   07 DEC 2017 07:00:00 EST
     uint public superBonusEndTime = 0;
 
     modifier canBuy() {
@@ -292,7 +292,7 @@ contract Crowdsale is owned {
         transactionCounter = transactionCounter + 1;
     }
 
-    function getBonus() private returns (uint) {
+    function getBonus() private view returns (uint) {
         if (now < startTime) {
             return presaleBonus;
         } else if (totalSupply > maxSecondPhaseAmount) {
@@ -303,7 +303,7 @@ contract Crowdsale is owned {
         return firstPhaseBonus;
     }
 
-    function getAdditionalBonus(uint256 amount) private returns (uint) {
+    function getAdditionalBonus(uint256 amount) private view returns (uint) {
         if (now < superBonusEndTime && amount >= minSuperBonusAmountForDeal) {
             return superBonus;
         }
@@ -315,8 +315,8 @@ contract Crowdsale is owned {
 
     function setSuperBonus(uint bonusValue, uint bonusEndTime, uint minAmountForDealInEther) external onlyOwner {
         superBonus = bonusValue;
-        superBonusEndTime = bonusEndTime;
-        minSuperBonusAmountForDeal = minAmountForDealInEther * 1 ether;
+        superBonusEndTime = now + bonusEndTime;
+        minSuperBonusAmountForDeal = minAmountForDealInEther * 0.0001 ether;
     }
 
     function finishCrowdsale() external onlyOwner {
@@ -335,10 +335,6 @@ contract Crowdsale is owned {
         token.transfer(msg.sender, bonuses);
     }
 
-//    function migrateToken(address newContract) external onlyOwner {
-//        require(isFinished());
-//        token.changeOwner(newContract);
-//    }
 
     function refund() external canRefund {
         uint256 amount = amounts[msg.sender];
