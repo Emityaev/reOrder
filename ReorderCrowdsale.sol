@@ -309,7 +309,7 @@ contract Crowdsale is owned {
     }
 
     function setSuperBonus(uint bonusValue, uint bonusEndTime, uint minAmountForDealInEther) external onlyOwner {
-        superBonus = bonusValue;
+        superBonus = now + bonusValue;
         superBonusEndTime = bonusEndTime;
         minSuperBonusAmountForDeal = minAmountForDealInEther * 1 ether;
     }
