@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 
 contract ERC20Basic {
@@ -25,25 +25,25 @@ contract ERC20 is ERC20Basic {
 
 library SafeMath {
 
-    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+    function mul(uint256 a, uint256 b) internal constant returns (uint256) {
         uint256 c = a * b;
         assert(a == 0 || c / a == b);
         return c;
     }
 
-    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+    function div(uint256 a, uint256 b) internal constant returns (uint256) {
         // assert(b > 0); // Solidity automatically throws when dividing by 0
         uint256 c = a / b;
         // assert(a == b * c + a % b); // There is no case in which this doesn't hold
         return c;
     }
 
-    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+    function sub(uint256 a, uint256 b) internal constant returns (uint256) {
         assert(b <= a);
         return a - b;
     }
 
-    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+    function add(uint256 a, uint256 b) internal constant returns (uint256) {
         uint256 c = a + b;
         assert(c >= a);
         return c;
@@ -167,9 +167,9 @@ contract MintableToken is StandardToken, owned {
 
 contract RCoin is MintableToken {
 
-    string public constant name = "RTest2 Coin";
+    string public constant name = "RTest5 Coin";
 
-    string public constant symbol = "RT2";
+    string public constant symbol = "RT5";
 
     uint32 public constant decimals = 18;
 }
@@ -219,15 +219,15 @@ contract Crowdsale is owned {
 
     uint256 public constant minPresaleAmountForDeal = 10 * 10**18 / 10000; // testing data. it's minimum 0.001 eth. for deal.
     uint256 public constant minSaleAmountForDeal = 1 * 10**16 / 1000; //0.00001 ETH
-    uint256 public constant minExtraBonusAmountForDeal = 100 * 10**18 / 10000; //1 ETH
+    uint256 public constant minExtraBonusAmountForDeal = 100 * 10**18 / 10000; //0.01 ETH
     uint256 public minSuperBonusAmountForDeal = 0;
 
 
     mapping (address => uint256) amounts;
 
-    uint public constant startTime =    1509030000; //Thursday, October 31, 2017 03:00:00 PM
+    uint public constant startTime =    1509642000; //Thursday, October 31, 2017 03:00:00 PM
     // 1510056000; // start at 07 NOV 2017 07:00:00 EST
-    uint public constant endTime =  1509066000; //  Friday, NOV 01, 2017 12:00:00 AM
+    uint public constant endTime =  1509717600; //  Friday, NOV 01, 2017 12:00:00 AM
     //1512648000; // end at   07 DEC 2017 07:00:00 EST
     uint public superBonusEndTime = 0;
 
